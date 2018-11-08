@@ -123,9 +123,9 @@ def uncertain(prob):
         optimal_purchase_number = 0
         for x in range(0, ub+1):
             s = prob.get_stock(day)
-            z1 = (x + s - 7 * prob.mu) / (7 * prob.sigma)
+            z1 = (x + s - 7 * prob.mu) / (2.64575 * prob.sigma)
             gamma1 = 1 - ss.norm.cdf(z1)
-            z2 = (x + s - prob.W - 7 * prob.mu) / (7 * prob.sigma)
+            z2 = (x + s - prob.W - 7 * prob.mu) / (2.64575 * prob.sigma)
             gamma2 = ss.norm.cdf(z2)
             o = (gamma1 + gamma2) * (gamma1 + gamma2)
             if o < obj:
@@ -135,6 +135,8 @@ def uncertain(prob):
 
 
 def run_prob(mu, sigma):
+    """ Run Problem instance with naive and uncertain algorithm respectively.
+    """
     prob = Problem(mu, sigma)
 
     # Run naive algorithm
@@ -188,6 +190,8 @@ def have_a_look(mu, sigma):
 
 
 if __name__ == '__main__':
-    # test(10)
-    # test(20)
-    have_a_look(20, 10)
+    #test(10)
+    test(20)
+    #have_a_look(20, 10)
+
+
