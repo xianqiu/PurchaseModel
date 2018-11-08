@@ -191,7 +191,7 @@ def have_a_look(mu, sigma):
 
 if __name__ == '__main__':
     #test(10)
-    test(20)
-    #have_a_look(20, 10)
+    #test(20)
+    have_a_look(20, 10)
 
 
